@@ -1,0 +1,262 @@
+Error number 1
+ - EPERM: Operation not permitted
+Error number 2
+ - ENOENT: No such file or directory / command not found
+Error number 3
+ - ESRCH: No such process
+Error number 4
+ - EINTR: Interrupted system call
+Error number 5
+ - EIO: Input/output error
+Error number 6
+ - ENXIO: No such device or address
+Error number 7
+ - E2BIG: Argument list too long
+Error number 8
+ - ENOEXEC: Exec format error
+Error number 9
+ - EBADF: Bad file descriptor
+Error number 10
+ - ECHILD: No child processes
+Error number 11
+ - EAGAIN: Resource temporarily unavailable
+Error number 12
+ - ENOMEM: Cannot allocate memory
+Error number 13
+ - EACCES: Permission denied
+Error number 14
+ - EFAULT: Bad address
+Error number 15
+ - ENOTBLK: Block device required
+Error number 16
+ - EBUSY: Device or resource busy
+Error number 17
+ - EEXIST: File exists
+Error number 18
+ - EXDEV: Invalid cross-device link
+Error number 19
+ - ENODEV: No such device
+Error number 20
+ - ENOTDIR: Not a directory
+Error number 21
+ - EISDIR: Is a directory
+Error number 22
+ - EINVAL: Invalid argument
+Error number 23
+ - ENFILE: Too many open files in system
+Error number 24
+ - EMFILE: Too many open files
+Error number 25
+ - ENOTTY: Inappropriate ioctl for device
+Error number 26
+ - ETXTBSY: Text file busy
+Error number 27
+ - EFBIG: File too large
+Error number 28
+ - ENOSPC: No space left on device
+Error number 29
+ - ESPIPE: Illegal seek
+Error number 30
+ - EROFS: Read-only file system
+Error number 31
+ - EMLINK: Too many links
+Error number 32
+ - EPIPE: Broken pipe
+Error number 33
+ - EDOM: Numerical argument out of domain
+Error number 34
+ - ERANGE: Numerical result out of range
+Error number 35
+ - EDEADLK: Resource deadlock avoided
+Error number 36
+ - ENAMETOOLONG: File name too long
+Error number 37
+ - ENOLCK: No locks available
+Error number 38
+ - ENOSYS: Function not implemented
+Error number 39
+ - ENOTEMPTY: Directory not empty
+Error number 40
+ - ELOOP: Too many levels of symbolic links
+Error number 42
+ - ENOMSG: No message of desired type
+Error number 43
+ - EIDRM: Identifier removed
+Error number 44
+ - ECHRNG: Channel number out of range
+Error number 45
+ - EL2NSYNC: Level 2 not synchronized
+Error number 46
+ - EL3HLT: Level 3 halted
+Error number 47
+ - EL3RST: Level 3 reset
+Error number 48
+ - ELNRNG: Link number out of range
+Error number 49
+ - EUNATCH: Protocol driver not attached
+Error number 50
+ - ENOCSI: No CSI structure available
+Error number 51
+ - EL2HLT: Level 2 halted
+Error number 52
+ - EBADE: Invalid exchange
+Error number 53
+ - EBADR: Invalid request descriptor
+Error number 54
+ - EXFULL: Exchange full
+Error number 55
+ - ENOANO: No anode
+Error number 56
+ - EBADRQC: Invalid request code
+Error number 57
+ - EBADSLT: Invalid slot
+Error number 59
+ - EBFONT: Bad font file format
+Error number 60
+ - ENOSTR: Device not a stream
+Error number 61
+ - ENODATA: No data available
+Error number 62
+ - ETIME: Timer expired
+Error number 63
+ - ENOSR: Out of streams resources
+Error number 64
+ - ENONET: Machine is not on the network
+Error number 65
+ - ENOPKG: Package not installed
+Error number 66
+ - EREMOTE: Object is remote
+Error number 67
+ - ENOLINK: Link has been severed
+Error number 68
+ - EADV: Advertise error
+Error number 69
+ - ESRMNT: Srmount error
+Error number 70
+ - ECOMM: Communication error on send
+Error number 71
+ - EPROTO: Protocol error
+Error number 72
+ - EMULTIHOP: Multihop attempted
+Error number 73
+ - EDOTDOT: RFS specific error
+Error number 74
+ - EBADMSG: Bad message
+Error number 75
+ - EOVERFLOW: Value too large for defined data type
+Error number 76
+ - ENOTUNIQ: Name not unique on network
+Error number 77
+ - EBADFD: File descriptor in bad state
+Error number 78
+ - EREMCHG: Remote address changed
+Error number 79
+ - ELIBACC: Can not access a needed shared library
+Error number 80
+ - ELIBBAD: Accessing a corrupted shared library
+Error number 81
+ - ELIBSCN: .lib section in a.out corrupted
+Error number 82
+ - ELIBMAX: Attempting to link in too many shared libraries
+Error number 83
+ - ELIBEXEC: Cannot exec a shared library directly
+Error number 84
+ - EILSEQ: Invalid or incomplete multibyte or wide character
+Error number 85
+ - ERESTART: Interrupted system call should be restarted
+Error number 86
+ - ESTRPIPE: Streams pipe error
+Error number 87
+ - EUSERS: Too many users
+Error number 88
+ - ENOTSOCK: Socket operation on non-socket
+Error number 89
+ - EDESTADDRREQ: Destination address required
+Error number 90
+ - EMSGSIZE: Message too long
+Error number 91
+ - EPROTOTYPE: Protocol wrong type for socket
+Error number 92
+ - ENOPROTOOPT: Protocol not available
+Error number 93
+ - EPROTONOSUPPORT: Protocol not supported
+Error number 94
+ - ESOCKTNOSUPPORT: Socket type not supported
+Error number 95
+ - EOPNOTSUPP: Operation not supported
+Error number 96
+ - EPFNOSUPPORT: Protocol family not supported
+Error number 97
+ - EAFNOSUPPORT: Address family not supported by protocol
+Error number 98
+ - EADDRINUSE: Address already in use
+Error number 99
+ - EADDRNOTAVAIL: Cannot assign requested address
+Error number 100
+ - ENETDOWN: Network is down
+Error number 101
+ - ENETUNREACH: Network is unreachable
+Error number 102
+ - ENETRESET: Network dropped connection on reset
+Error number 103
+ - ECONNABORTED: Software caused connection abort
+Error number 104
+ - ECONNRESET: Connection reset by peer
+Error number 105
+ - ENOBUFS: No buffer space available
+Error number 106
+ - EISCONN: Transport endpoint is already connected
+Error number 107
+ - ENOTCONN: Transport endpoint is not connected
+Error number 108
+ - ESHUTDOWN: Cannot send after transport endpoint shutdown
+Error number 109
+ - ETOOMANYREFS: Too many references: cannot splice
+Error number 110
+ - ETIMEDOUT: Connection timed out
+Error number 111
+ - ECONNREFUSED: Connection refused
+Error number 112
+ - EHOSTDOWN: Host is down
+Error number 113
+ - EHOSTUNREACH: No route to host
+Error number 114
+ - EALREADY: Operation already in progress
+Error number 115
+ - EINPROGRESS: Operation now in progress
+Error number 116
+ - ESTALE: Stale file handle
+Error number 117
+ - EUCLEAN: Structure needs cleaning
+Error number 118
+ - ENOTNAM: Not a XENIX named type file
+Error number 119
+ - ENAVAIL: No XENIX semaphores available
+Error number 120
+ - EISNAM: Is a named type file
+Error number 121
+ - EREMOTEIO: Remote I/O error
+Error number 122
+ - EDQUOT: Disk quota exceeded
+Error number 123
+ - ENOMEDIUM: No medium found
+Error number 124
+ - EMEDIUMTYPE: Wrong medium type
+Error number 125
+ - ECANCELED: Operation canceled
+Error number 126
+ - ENOKEY: Required key not available
+Error number 127
+ - EKEYEXPIRED: Key has expired
+Error number 128
+ - EKEYREVOKED: Key has been revoked
+Error number 129
+ - EKEYREJECTED: Key was rejected by service
+Error number 130
+ - EOWNERDEAD: Owner died
+Error number 131
+ - ENOTRECOVERABLE: State not recoverable
+Error number 132
+ - ERFKILL: Operation not possible due to RF-kill
+Error number 133
+ - EHWPOISON: Memory page has hardware error
