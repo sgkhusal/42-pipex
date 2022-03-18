@@ -20,6 +20,7 @@ int	main()
 	int child_pid2;
 
 	printf("\nLet's understand multiples fork's return:\n");
+	printf("Hello from initial pid %d\n", getpid());
 	child_pid1 = fork();
 	child_pid2 = fork();
 	if(child_pid1 != 0)

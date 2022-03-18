@@ -1,0 +1,39 @@
+
+Let's understand multiples fork's return:
+Hello from initial pid 1883
+
+*********************************************************
+Hello! I'am the child 2 and I don't have any child:
+Process PID: 1885
+Child 1 PID: 1884
+Child 2 PID: 0
+Parent PID: 1883
+
+Let's understand multiples fork's return:
+Hello from initial pid 1883
+
+*********************************************************
+Hello! I'am the child from child 1 and so the grandchild from father process:
+Process PID: 1886
+Child 1 PID: 0
+Child 2 PID: 0
+Parent PID: 1884
+
+Let's understand multiples fork's return:
+Hello from initial pid 1883
+
+*********************************************************
+Hello! I'am the child 1 and I also have a child:
+Process PID: 1884
+Child 1 PID: 0
+Child 2 PID: 1886
+Parent PID: 1883
+
+Let's understand multiples fork's return:
+Hello from initial pid 1883
+
+*********************************************************
+Hello! I'am the parent of all processes in this program:
+Process PID: 1883
+Child 1 PID: 1884
+Child 2 PID: 1885

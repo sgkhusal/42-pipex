@@ -30,7 +30,9 @@ int main() {
         text = "mama";
     }
 	
-    for (int i = 0; i != 100; ++i) {
+    for (int i = 0; i != 1000000; ++i) {
         ssize_t s = puts(text);
     }
 }
+
+// run gcc fork_mix_stdio.c && ./a.out | uniq -c to see that the words are writing in a messy way

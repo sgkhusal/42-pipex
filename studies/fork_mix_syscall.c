@@ -29,7 +29,7 @@ int main() {
         text = "mama\n";
     }
 
-    for (int i = 0; i != 100; ++i) {
+    for (int i = 0; i != 1000000; ++i) {
         ssize_t s = write(STDOUT_FILENO, text, strlen(text));
         assert(s == (ssize_t) strlen(text));
     }

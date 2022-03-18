@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fork_mix2.c                                        :+:      :+:    :+:   */
+/*   fork_mix_syscall2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 04:16:44 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/18 04:23:55 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/18 18:17:45 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int main() {
         text = "mama\n";
     }
 
-	wait(NULL);
-    for (int i = 0; i != 100; ++i) {
+	wait(NULL); // the parent will execute only after the child execute
+    for (int i = 0; i != 1000000; ++i) {
         ssize_t s = write(STDOUT_FILENO, text, strlen(text));
         assert(s == (ssize_t) strlen(text));
     }
