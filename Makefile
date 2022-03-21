@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
+#    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/04 21:14:15 by coder             #+#    #+#              #
-#    Updated: 2022/03/14 21:13:36 by coder            ###   ########.fr        #
+#    Updated: 2022/03/21 04:15:33 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ OBJ_PATH =			./obj
 SRC_BONUS_PATH =	./bonus
 OBJ_BONUS_PATH =	./obj/bonus
 
-SRC_FILES =			pipex.c
+SRC_FILES =			pipex.c pipex_init.c pipex_close.c pipex_utils.c
 
 SRC =				$(addprefix $(SRC_PATH)/, $(SRC_FILES))
 OBJ =				$(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
@@ -44,7 +44,7 @@ OBJ_BONUS =			$(SRC_BONUS:$(SRC_BONUS_PATH)/%.c=$(OBJ_BONUS_PATH)/%.o)
 
 # compilation
 CC =		gcc
-CFLAGS =	-Wall -Werror -Wextra #-fsanitize=leak
+CFLAGS =	-g3 -Wall -Werror -Wextra #-fsanitize=leak
 GNLFLAGS =	-D BUFFER_SIZE=10
 
 # clean
