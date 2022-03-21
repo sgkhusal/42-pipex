@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 20:09:46 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/21 04:28:41 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/21 04:48:17 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,16 @@ static void	cmds_path(t_pipex *data, t_cmd *cmd)
 	i = 0;
 	while (data->exec_paths[i])
 	{
-		ft_printf("Vamos juntar %s, / e %s\n", data->exec_paths[i], cmd->cmd);
+		//ft_printf("Vamos juntar %s, / e %s\n", data->exec_paths[i], cmd->cmd);
 		path = ft_strsjoin(3, data->exec_paths[i], "/", cmd->cmd);
-		ft_printf("%s\n", path);
-		/* if(access(path, F_OK))
+		if(access(path, F_OK))
 		{
 			if(access(path, X_OK))
 			{
 				cmd->path = path;
 				return ;
 			}
-		} */
+		}
 		i++;
 	}
 	ft_printf("%s: %s\n", cmd->cmd, strerror(E_CMDNOTFOUND));;
@@ -90,6 +89,7 @@ static void	set_cmds(t_pipex *data, char *argv[])
 			pipex_error(data, "Malloc error for data->cmds[i]->args"); // limpar  */
 		data->cmds[i]->cmd = ft_strdup(data->cmds[i]->args[0]);
 		cmds_path(data, data->cmds[i]);
+		ft_printf("%s\n", data->cmds[i]->path);
 		i++;
 	}
 }
@@ -109,11 +109,11 @@ void	pipex_init(t_pipex *data, int argc, char *argv[], char *envp[])
 	set_env_path(data, envp);
 	ft_printf("%s\n", data->env_path);
 	int i = 0;
-	while(data->exec_paths[i])
+	/* while(data->exec_paths[i])
 	{
 		ft_printf("%s\n", data->exec_paths[i]);
 		i++;
-	}
+	} */
 	set_cmds(data, argv);
 	i = 0;
 	while (data->cmds[i])
