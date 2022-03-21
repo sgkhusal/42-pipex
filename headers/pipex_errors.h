@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 20:54:13 by coder             #+#    #+#             */
-/*   Updated: 2022/03/20 19:21:05 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/21 05:20:40 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@
 # define E_CMDNOTFOUND 0 /////// 2 é o mesmo numero de erro do de baixo, mas a mensagem é outra!!!
 # define E_NOENT 2
 # define E_ACCES 13
+# define E_NOEXEC 8
 
 #endif
