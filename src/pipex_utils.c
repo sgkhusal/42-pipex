@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 01:31:35 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/21 05:09:30 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/21 05:13:37 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ void	ft_strjoin_free(char **str1, char *str2)
 	*str1 = aux;
 }
 
-char	*ft_strsjoin(int n, ...)
+char	*ft_strsjoin(int n, char *str1, ...)
 {
 	va_list	strs;
 	int		i;
 	char	*s;
 	char	*aux;
 
-	va_start(strs, n);
-	aux = ft_strdup("");
-	i = 0;
+	va_start(strs, str1);
+	aux = ft_strdup(str1);
+	i = 1;
 	while(i < n)
 	{
 		s = va_arg(strs, char *);
