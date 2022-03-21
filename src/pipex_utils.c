@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 01:31:35 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/21 05:05:59 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/21 05:09:30 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ char	*ft_strsjoin(int n, ...)
 
 	va_start(strs, n);
 	aux = ft_strdup("");
-	//ft_strjoin_free(&aux, str1);
 	i = 0;
 	while(i < n)
 	{
