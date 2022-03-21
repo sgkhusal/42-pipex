@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 20:49:47 by coder             #+#    #+#             */
-/*   Updated: 2022/03/21 01:21:18 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/21 04:46:36 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,6 @@ int	main(int argc, char *argv[], char *envp[])
 	else
 	{
 		pipex_init(&data, argc, argv, envp);
-		/* int i = 0;
-		while (argv[i])
-		{
-			ft_printf("%s\n", argv[i]);
-			i++;
-		}
-		ft_printf("comands = %i\ninfile fd = %i\noutfile fd = %i\n",
-			data.total_cmds, data.input_fd, data.output_fd); */
 	}
 	close_pipex(&data);
 	return (0);
