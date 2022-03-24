@@ -6,45 +6,36 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 20:49:47 by coder             #+#    #+#             */
-/*   Updated: 2022/03/21 04:46:36 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/24 04:02:15 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/pipex.h"
 
-void	pipex_pipes(t_pipex	*data)
+void	pipex(t_pipex *data, char *envp[])
 {
-	int	pipe_fds[2];
 	int	child_pid;
 	int	i;
 
-	if(pipe(pipe_fds) == -1)
-		pipex_error(data, "Pipe creating error");
 	i = 0;
-	while(i < data->total_cmds)
+	while (i < data->total_cmds)
 	{
+		if (pipe(data->pipe_fds) == -1)
+			pipex_error(data, "pipex: pipe creating error");
 		child_pid = fork();
-		if(child_pid == -1)
-			pipex_error(data, "Fork creating error");
+		if (child_pid == -1)
+			pipex_error(data, "pipex: fork creating error");
 		if (child_pid == 0)
+			pipex_child(data, i, envp);
+		else
 		{
-			if (i == 0)
-			{
-				close(pipe_fds[0]);
-				dup2(data->input_fd, STDIN);
-				dup2(pipe_fds[1], STDOUT);
-			}
-			else if (i == data->total_cmds - 1)
-			{
-				close(pipe_fds[1]);
-				dup2(pipe_fds[0], STDIN);
-				dup2(data->output_fd, STDOUT);
-			}
-			else
-			{
-				dup2(pipe_fds[0], STDIN);
-				dup2(pipe_fds[1], STDOUT); // vai dar xabu!!! tem que ser pipes diferentes
-			}
+			if (i != 0)
+				close(data->pipe_in_fd);
+			data->pipe_in_fd = dup(data->pipe_fds[0]);
+			close(data->pipe_fds[0]);
+			close(data->pipe_fds[1]);
+			waitpid(child_pid, NULL, 0); //
+			i++;
 		}
 	}
 }
@@ -55,13 +46,14 @@ int	main(int argc, char *argv[], char *envp[])
 	
 	if (argc != 5)
 	{
-		ft_printf("%s - pipex needs 4 arguments\n", strerror(E_INVAL));
+		ft_printf("pipex: %s - pipex needs 4 arguments\n", strerror(E_INVAL));
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
 		pipex_init(&data, argc, argv, envp);
+		pipex(&data, envp);
 	}
-	close_pipex(&data);
+	pipex_close(&data);
 	return (0);
 }

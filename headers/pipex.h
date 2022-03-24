@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 20:54:13 by coder             #+#    #+#             */
-/*   Updated: 2022/03/21 05:12:54 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/23 19:22:25 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,16 @@ typedef struct s_pipex
 {
 	int		input_fd;
 	int		output_fd;
+	int		pipe_fds[2];
+	int		pipe_in_fd;
 	int		total_cmds;
 	t_cmd	**cmds;
-	char	*env_path;
 	char	**exec_paths;
 }				t_pipex;
 
 void	pipex_init(t_pipex *data, int argc, char *argv[], char *envp[]);
-
-void	close_pipex(t_pipex *data);
+void	pipex_child(t_pipex *data, int i, char *envp[]);
+void	pipex_close(t_pipex *data);
 void	pipex_error(t_pipex *data, char *msg);
 
 char	*ft_strsjoin(int n, char *str1, ...);
