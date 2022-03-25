@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/04 21:14:15 by coder             #+#    #+#              #
-#    Updated: 2022/03/22 22:17:43 by sguilher         ###   ########.fr        #
+#    Updated: 2022/03/24 20:32:58 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRC_BONUS_PATH =	./bonus
 OBJ_BONUS_PATH =	./obj/bonus
 
 SRC_FILES =			pipex.c pipex_init.c pipex_child.c pipex_utils.c \
-					pipex_close.c 
+					pipex_close.c pipex_ft_split.c
 
 SRC =				$(addprefix $(SRC_PATH)/, $(SRC_FILES))
 OBJ =				$(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
