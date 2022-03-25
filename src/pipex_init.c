@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 20:09:46 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/24 04:05:39 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/25 05:31:07 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ static void	alloc_cmds(t_pipex *data)
 
 	data->cmds = (t_cmd **)(malloc((data->total_cmds + 1) * sizeof(t_cmd *)));
 	if (!data->cmds)
-		pipex_error(data, "Allocation memory error for data->cmds"); // precisa limpar
-		//a variável de ambiente;
+		pipex_error(data, "Allocation memory error for data->cmds");
 	i = 0;
 	while (i < data->total_cmds)
 	{
@@ -61,9 +60,9 @@ static void	set_cmds(t_pipex *data, char *argv[])
 	while(i < data->total_cmds)
 	{
 		*data->cmds[i] = (t_cmd){.args = NULL, .cmd = NULL, .path = NULL};
-		data->cmds[i]->args = ft_split(argv[i + 2], ' '); ///
+		pipex_cmd_args_split(data, data->cmds[i], argv[i + 2]);
 		if (data->cmds[i]->args == NULL)
-			pipex_error(data, "Malloc error for data->cmds[i]->args"); // limpar  */
+			pipex_error(data, "pipex: malloc error in set_cmds"); // limpar 
 		data->cmds[i]->cmd = ft_strdup(data->cmds[i]->args[0]);
 		i++;
 	}
@@ -95,3 +94,33 @@ void	pipex_init(t_pipex *data, int argc, char *argv[], char *envp[])
 		i++;
 	}
 }
+
+/* static int	cmds_limiters(char **args, char c)
+{
+	int	i;
+	int	j;
+	char	*tmp;
+	int	simple_quote_qty;
+	int	double_quotes_qty;
+
+	simple_quote_qty = ft_limiter_qty(args, '\'');
+	double_quotes_qty = ft_limiter_qty(args, '\"');
+
+	i = 0;
+	while (args[i] != NULL)
+	{
+		if (args[i][0] = c)
+		{
+			j = 1;
+			tmp = ft_strdup(args[i]);
+			while (args[i + j][ft_strlen(args[i + j] - 1)] != c)
+			{
+				tmp = ft_strsjoin(3, tmp, " ", args[i + j]);
+				j++;
+			}
+			tmp = ft_strsjoin(3, tmp, " ", args[i + j]);
+			free(args[i]);
+			args[i] = tmp;
+		}
+	}
+} */
