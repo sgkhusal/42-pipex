@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 21:25:36 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/25 05:37:13 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/25 22:07:20 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,22 @@ void	pipex_error(t_pipex *data, char *msg)
 	exit(EXIT_FAILURE);
 }
 
-void	clean_ptrptr(void **ptr)
+void	pipex_error2(t_pipex *data, char *msg)
+{
+	ft_printf("pipex: %s\n", msg);
+	pipex_close(data);
+	exit(EXIT_FAILURE);
+}
+
+void	pipex_quote_error(t_pipex *data, char **aux)
+{
+	ft_printf("pipex: invalid argument: missing single quote\n");
+	ft_clean_ptrptr((void **)aux);
+	pipex_close(data);
+	exit(EXIT_FAILURE);
+}
+
+void	ft_clean_ptrptr(void **ptr)
 {
 	int	i;
 
@@ -41,23 +56,23 @@ void	clean_ptrptr(void **ptr)
 
 void	pipex_close(t_pipex *data)
 {
-	int i;
-	
+	int	i;
+
 	if (data->exec_paths)
-		clean_ptrptr((void **) data->exec_paths);
+		ft_clean_ptrptr((void **) data->exec_paths);
 	if (data->cmds != NULL)
 	{
 		i = 0;
-		while(data->cmds[i])
+		while (data->cmds[i])
 		{
 			if (data->cmds[i]->cmd)
 				free(data->cmds[i]->cmd);
 			if (data->cmds[i]->path)
 				free(data->cmds[i]->path);
-			clean_ptrptr((void **) data->cmds[i]->args);
+			ft_clean_ptrptr((void **) data->cmds[i]->args);
 			i++;
 		}
-		clean_ptrptr((void **) data->cmds);
+		ft_clean_ptrptr((void **) data->cmds);
 	}
 	close(data->input_fd);
 	close(data->output_fd);

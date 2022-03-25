@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 20:49:47 by coder             #+#    #+#             */
-/*   Updated: 2022/03/24 04:02:15 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/25 22:05:19 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,11 @@ void	pipex(t_pipex *data, char *envp[])
 		{
 			if (i != 0)
 				close(data->pipe_in_fd);
-			data->pipe_in_fd = dup(data->pipe_fds[0]);
+			if (i < data->total_cmds - 1)
+				data->pipe_in_fd = dup(data->pipe_fds[0]);
 			close(data->pipe_fds[0]);
 			close(data->pipe_fds[1]);
-			waitpid(child_pid, NULL, 0); //
+			waitpid(child_pid, NULL, 0);
 			i++;
 		}
 	}
@@ -43,7 +44,7 @@ void	pipex(t_pipex *data, char *envp[])
 int	main(int argc, char *argv[], char *envp[])
 {
 	t_pipex	data;
-	
+
 	if (argc != 5)
 	{
 		ft_printf("pipex: %s - pipex needs 4 arguments\n", strerror(E_INVAL));

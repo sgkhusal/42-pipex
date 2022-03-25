@@ -6,16 +6,16 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 21:51:00 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/25 05:38:59 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/25 21:59:12 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/pipex.h"
 
-static int pipex_cmd_path(t_pipex *data, t_cmd *cmd)
+static int	pipex_cmd_path(t_pipex *data, t_cmd *cmd)
 {
-	int i;
-	char *path;
+	int		i;
+	char	*path;
 
 	i = 0;
 	while (data->exec_paths[i])
@@ -39,9 +39,9 @@ static int pipex_cmd_path(t_pipex *data, t_cmd *cmd)
 	return (E_CMD_NOT_FOUND);
 }
 
-static void pipex_exec_cmd(t_pipex *data, t_cmd *cmd, char *envp[])
+static void	pipex_exec_cmd(t_pipex *data, t_cmd *cmd, char *envp[])
 {
-	int check;
+	int	check;
 
 	check = pipex_cmd_path(data, cmd);
 	if (check == OK)
@@ -67,7 +67,6 @@ static void pipex_exec_cmd(t_pipex *data, t_cmd *cmd, char *envp[])
 
 void	pipex_child(t_pipex *data, int i, char *envp[])
 {
-	ft_printf("Estamos na child\n");
 	if (i == 0)
 	{
 		dup2(data->input_fd, STDIN);
@@ -87,5 +86,10 @@ void	pipex_child(t_pipex *data, int i, char *envp[])
 	close(data->pipe_fds[1]);
 	close(data->input_fd);
 	close(data->output_fd);
+	if (!data->cmds[i]->cmd[0])
+	{
+		ft_printf_fd(2, "pipex: : command not found\n");
+		exit(EXIT_FAILURE);
+	}
 	pipex_exec_cmd(data, data->cmds[i], envp);
 }
