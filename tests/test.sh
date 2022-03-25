@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 22:02:02 by sguilher          #+#    #+#              #
-#    Updated: 2022/03/20 19:19:27 by sguilher         ###   ########.fr        #
+#    Updated: 2022/03/25 21:01:24 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,3 +44,16 @@ grep p
 # cria o arquivo de outfile ou deixa ele vazio se ele existe
 # msg de erro "bash: lss: command not found"
 # msg de erro "bash: wcc: command not found"
+
+
+# < swim_good "" | tr 'o' '0' > outfile
+# bash: : command not found
+# cria o outfile
+
+#< swim_good "" | "" > outfile
+#bash: : command not found
+#bash: : command not found
+
+#< swim_good grep swim |  > outfile ou
+#< swim_good grep swim | > outfile
+#não joga nada no terminal
