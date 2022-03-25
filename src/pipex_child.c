@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 21:51:00 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/24 04:23:42 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/25 05:38:59 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,5 @@ void	pipex_child(t_pipex *data, int i, char *envp[])
 	close(data->pipe_fds[1]);
 	close(data->input_fd);
 	close(data->output_fd);
-	//ft_printf_fd(1, "cmd %i = %s\n", i, data->cmds[i]->cmd); //
 	pipex_exec_cmd(data, data->cmds[i], envp);
 }
