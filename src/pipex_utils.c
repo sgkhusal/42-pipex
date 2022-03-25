@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 01:31:35 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/25 05:30:31 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/25 20:45:27 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_strsjoin(int n, char *str1, ...)
 		return (NULL);
 	va_start(strs, str1);
 	i = 1;
-	while(i < n)
+	while (i < n)
 	{
 		s = va_arg(strs, char *);
 		ft_strjoin_free(&aux, s);
@@ -43,7 +43,7 @@ char	*ft_strsjoin(int n, char *str1, ...)
 			i = n;
 	}
 	va_end(strs);
-	return(aux);
+	return (aux);
 }
 
 int	ft_char_pos(char *str, char c)
@@ -51,7 +51,7 @@ int	ft_char_pos(char *str, char c)
 	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == c)
 			return (i);
@@ -91,13 +91,13 @@ void	ft_arraysjoin(char **array1, char **array2)
 {
 	int		i;
 	char	**aux;
-	
+
 	i = 0;
 	while (array2[i])
 	{
 		aux = array1;
 		array1 = ft_strarrayjoin(aux, array2[i]);
-		clean_ptrptr((void **)aux);
+		ft_clean_ptrptr((void **)aux);
 		i++;
 	}
 }
