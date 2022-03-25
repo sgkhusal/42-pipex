@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 21:25:36 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/22 22:19:12 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/25 05:37:13 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	pipex_error(t_pipex *data, char *msg)
 	exit(EXIT_FAILURE);
 }
 
-static void	clean_ptrptr(void **ptr)
+void	clean_ptrptr(void **ptr)
 {
 	int	i;
 
 	i = 0;
-	if (ptr == NULL && !(*ptr))
+	if (ptr == NULL && !ptr[i])
 		return ;
 	else
 	{
