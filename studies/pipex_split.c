@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 01:46:17 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/25 04:58:31 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/25 20:00:12 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	**ft_strarrayjoin(char **array, char *str)
 	return (new_array);
 }
 
-void	pipex_cmd_args_split(t_cmd *cmd, char *args)
+void	pipex_cmd_args_split_test(t_cmd *cmd, char *args)
 {
 	int		i;
 	int		simple_quote;
@@ -116,6 +116,7 @@ void	pipex_cmd_args_split(t_cmd *cmd, char *args)
 				if (args[i])
 				{
 					simple_quote = char_pos(&args[i], '\'');
+					ft_printf("simple_quote = %i\n", simple_quote);
 					if (simple_quote != -1)
 					{
 						if (simple_quote == 1 && args[i] == ' ')
@@ -123,7 +124,7 @@ void	pipex_cmd_args_split(t_cmd *cmd, char *args)
 						else
 						{
 							tmp = ft_substr(args, i, simple_quote);
-							ft_printf("simple_quote = %i\n", simple_quote);
+							//ft_printf("simple_quote = %i\n", simple_quote);
 							ft_printf("here tmp = %s\n", tmp);
 							aux = ft_split(tmp, ' ');
 							int j = 0;
@@ -140,6 +141,24 @@ void	pipex_cmd_args_split(t_cmd *cmd, char *args)
 						}
 						aux = cmd->args;
 					}
+					else
+					{
+						ft_printf("estamos aqui now\n");
+						tmp = ft_substr(args, i, ft_strlen(args));
+						aux = ft_split(tmp, ' ');
+						int j = 0;
+						char	**aux2;
+						while (aux[j])
+						{
+							aux2 = cmd->args;
+							cmd->args = ft_strarrayjoin(aux2, aux[j]);
+							clean_ptrptr((void **)aux2);
+							j++;
+						}
+						free(tmp);
+						clean_ptrptr((void **)aux);
+						i = ft_strlen(args);
+					}
 				}
 			}
 		}
@@ -149,61 +168,15 @@ void	pipex_cmd_args_split(t_cmd *cmd, char *args)
 int	main()
 {
 	t_cmd	cmd;
-	char	args[] = "     '  ' awk -F: '{print $1}' bla bla bla ' ' '   ' '' nnnnn";
+	char	args[] = "''     '  ' awk -F: '{print $1}' bla bla bla \"bla bla bla\" ' ' '   '  bla bla bla ";
 	int		i;
 
 	ft_printf("%s\n", args);
-	pipex_cmd_args_split(&cmd, args);
+	pipex_cmd_args_split_test(&cmd, args);
 	i = 0;
 	while (cmd.args[i])
 	{
-		ft_printf("%s - size = %i\n", cmd.args[i], ft_strlen(cmd.args[i]));
+		ft_printf("|%s| - size = %i\n", cmd.args[i], ft_strlen(cmd.args[i]));
 		i++;
 	}
 }
-
-
-/* typedef struct s_word_set
-{
-	int	init;
-	int	final;
-	int	size;
-	int	limiter_type;
-	struct s_word_set	*next;
-}				t_word_set;
-
-
-static size_t	words_setup(char const *s, char c)
-{
-	int		i;
-	size_t	count;
-	t_word_set	*ws;
-	t_word_set	**words;
-
-	if (!s || !s[0])
-		return (0);
-	words = (t_word_set *)malloc(sizeof(t_word_set));
-	if (!words)
-		return (NULL);
-	count = 0;
-	i = 0;
-	if (s[i] != c && s[i])
-	{
-		ws = (t_word_set *)malloc(sizeof(t_word_set));
-			if (!words)
-		return (NULL);
-		count = 1;
-		ws->init = i;
-		ws->next = NULL;
-	}
-	while (s[i])
-	{
-		if (s[i] != c && s[i - 1] == c)
-		{
-			count++;
-			ws->init = i;
-		}
-		i++;
-	}
-	return (count);
-} */
