@@ -36,6 +36,7 @@
 *.x86_64
 *.hex
 pipex
+pipex_bonus
 
 # Debug files
 *.dSYM/

@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/04 21:14:15 by coder             #+#    #+#              #
-#    Updated: 2022/03/25 22:27:12 by sguilher         ###   ########.fr        #
+#    Updated: 2022/03/26 02:11:14 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,11 +32,12 @@ OBJ_BONUS_PATH =	./obj/bonus
 
 SRC_FILES =			pipex.c pipex_init.c pipex_child.c pipex_utils.c \
 					pipex_close.c pipex_args_split.c
+SRC_BONUS_FILES =	pipex_bonus.c pipex_init_bonus.c pipex_child_bonus.c \
+					pipex_utils_bonus.c \
+					pipex_close_bonus.c pipex_args_split_bonus.c	
 
 SRC =				$(addprefix $(SRC_PATH)/, $(SRC_FILES))
 OBJ =				$(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
-
-SRC_BONUS_FILES =	
 
 SRC_BONUS =			$(addprefix $(SRC_BONUS_PATH)/, $(SRC_BONUS_FILES))
 OBJ_BONUS =			$(SRC_BONUS:$(SRC_BONUS_PATH)/%.c=$(OBJ_BONUS_PATH)/%.o)
@@ -68,7 +69,7 @@ $(OBJ_BONUS_PATH)/%.o:	$(SRC_BONUS_PATH)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(LIBFT) $(PRINTF) $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $(OBJ) $(PRINTF) $(LIBFT) $(MLXFLAGS)
+	$(CC) $(CFLAGS) -o $@ $(OBJ) $(PRINTF) $(LIBFT)
 	@echo "\033[1;32m"
 	@echo "************************************"
 	@echo "           pipex created"
@@ -76,7 +77,7 @@ $(NAME):	$(LIBFT) $(PRINTF) $(OBJ)
 	@echo "\033[0m"
 
 $(BONUS):	$(LIBFT) $(PRINTF) $(OBJ_BONUS)
-	$(CC) $(CFLAGS) -o $@ $(OBJ_BONUS) $(PRINTF) $(LIBFT) $(MLXFLAGS)
+	$(CC) $(CFLAGS) -o $@ $(OBJ_BONUS) $(PRINTF) $(LIBFT)
 	@echo "\033[1;32m"
 	@echo "************************************"
 	@echo "        pipex_bonus created"
