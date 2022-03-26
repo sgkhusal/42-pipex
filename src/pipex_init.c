@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 20:09:46 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/25 22:21:21 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/26 04:37:55 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,19 @@ static void	set_cmds(t_pipex *data, char *argv[])
 {
 	int	i;
 
-	data->total_cmds = 2; // muda aqui no bonus
+	data->total_cmds = 2;
 	alloc_cmds(data);
 	i = 0;
 	while (i < data->total_cmds)
 	{
-		*data->cmds[i] = (t_cmd){.args = NULL, .cmd = NULL, .path = NULL};
+		data->cmds[i]->args = NULL;	
+		data->cmds[i]->cmd = NULL;
+		data->cmds[i]->path = NULL;
+		i++;
+	}
+	i = 0;
+	while (i < data->total_cmds)
+	{
 		pipex_cmd_args_split(data, data->cmds[i], argv[i + 2]);
 		if (data->cmds[i]->args == NULL)
 			pipex_error2(data, "pipex: cmd args split error");

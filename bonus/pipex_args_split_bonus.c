@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_ft_split.c                                   :+:      :+:    :+:   */
+/*   pipex_args_split_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 02:55:08 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/25 20:50:24 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/26 04:17:58 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ void	pipex_cmd_args_split(t_pipex *data, t_cmd *cmd, char *args)
 		{
 			split.quote_pos = ft_char_pos(&args[split.i], '\'');
 			if (split.quote_pos == -1)
+			{
+				cmd->args = NULL;
 				pipex_quote_error(data, split.aux);
+			}
 			else
 				pipex_cmd_args_split_part2(cmd, args, &split);
 		}
 	}
 }
-
-// se for comando vazio "" --> não faz nada!! --> está dando segfault
-// problema com "" (aspas sem comando - dá segfault, bash dá cmd not found)

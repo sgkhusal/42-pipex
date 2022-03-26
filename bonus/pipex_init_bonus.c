@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_init.c                                       :+:      :+:    :+:   */
+/*   pipex_init_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 20:09:46 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/25 22:34:53 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/26 04:38:04 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,14 @@ static void	set_cmds(t_pipex *data, int argc, char *argv[])
 
 	data->total_cmds = argc - 3;
 	alloc_cmds(data);
+	i = 0;
+	while (i < data->total_cmds)
+	{
+		data->cmds[i]->args = NULL;	
+		data->cmds[i]->cmd = NULL;
+		data->cmds[i]->path = NULL;
+		i++;
+	}
 	i = 0;
 	while (i < data->total_cmds)
 	{
