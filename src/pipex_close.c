@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 21:25:36 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/25 22:07:20 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/26 02:42:04 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,18 @@ void	ft_clean_ptrptr(void **ptr)
 	int	i;
 
 	i = 0;
-	if (ptr == NULL && !ptr[i])
+	if (ptr == NULL)
 		return ;
 	else
 	{
-		while (ptr[i])
+		if (ptr[i])
 		{
-			free(ptr[i]);
-			ptr[i] = NULL;
-			i++;
+			while (ptr[i])
+			{
+				free(ptr[i]);
+				ptr[i] = NULL;
+				i++;
+			}
 		}
 		free(ptr);
 		ptr = NULL;
