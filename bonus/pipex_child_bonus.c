@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_child.c                                      :+:      :+:    :+:   */
+/*   pipex_child_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 21:51:00 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/25 22:33:34 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/28 22:56:25 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	pipex_exec_cmd(t_pipex *data, t_cmd *cmd, char *envp[])
 		if (check == E_NOEXEC)
 			ft_printf_fd(2, "%s: %s\n", cmd->cmd, strerror(E_NOEXEC));
 		else if (check == E_CMD_NOT_FOUND)
-			ft_printf("pipex: %s: command not found\n", cmd->cmd);
+			ft_printf_fd(2, "pipex: %s: command not found\n", cmd->cmd);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -69,6 +69,8 @@ void	pipex_child(t_pipex *data, int i, char *envp[])
 {
 	if (i == 0)
 	{
+		if (data->input_fd == -1)
+			exit(EXIT_FAILURE);
 		dup2(data->input_fd, STDIN);
 		dup2(data->pipe_fds[1], STDOUT);
 	}
