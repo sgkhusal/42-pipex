@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 20:54:13 by coder             #+#    #+#             */
-/*   Updated: 2022/03/29 20:49:13 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/29 22:39:01 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_pipex
 	int		pipe_fds[2];
 	int		pipe_in_fd;
 	int		total_cmds;
+	int		status;
 	t_cmd	**cmds;
 	char	**exec_paths;
 }				t_pipex;

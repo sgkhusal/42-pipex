@@ -6,11 +6,26 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 20:49:47 by coder             #+#    #+#             */
-/*   Updated: 2022/03/25 22:05:19 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/29 23:08:05 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/pipex.h"
+
+static void	pipex_exit_status(t_pipex *data, int child_pid)
+{
+	int	w;
+	int	status;
+	
+	w = waitpid(child_pid, &status, 0);
+	if (w == -1)
+	{
+		pipex_error(data, "pipex: waitpid error");
+		exit(EXIT_FAILURE);
+	}
+	if (WIFEXITED(status))
+		data->status = WEXITSTATUS(status);
+}
 
 void	pipex(t_pipex *data, char *envp[])
 {
@@ -33,9 +48,8 @@ void	pipex(t_pipex *data, char *envp[])
 				close(data->pipe_in_fd);
 			if (i < data->total_cmds - 1)
 				data->pipe_in_fd = dup(data->pipe_fds[0]);
-			close(data->pipe_fds[0]);
-			close(data->pipe_fds[1]);
-			waitpid(child_pid, NULL, 0);
+			pipex_close_pipe_fds(data);
+			pipex_exit_status(data, child_pid);
 			i++;
 		}
 	}
@@ -56,5 +70,5 @@ int	main(int argc, char *argv[], char *envp[])
 		pipex(&data, envp);
 	}
 	pipex_close(&data);
-	return (0);
+	return (data.status);
 }

@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 21:51:00 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/29 20:47:23 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/29 22:54:30 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,17 @@ static void	pipex_exec_cmd(t_pipex *data, t_cmd *cmd, char *envp[])
 	else
 	{
 		if (check == E_NOEXEC)
+		{
 			ft_printf_fd(2, "%s: %s\n", cmd->cmd, strerror(E_NOEXEC));
+			pipex_close(data);
+			exit(E_NOEXEC);
+		}
 		else if (check == E_CMD_NOT_FOUND)
+		{
 			ft_printf_fd(2, "pipex: %s: command not found\n", cmd->cmd);
-		pipex_close(data);
+			pipex_close(data);
+			exit(E_CMD_NOT_FOUND);
+		}
 		exit(EXIT_FAILURE);
 	}
 }
