@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 21:25:36 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/26 04:40:58 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/29 20:34:53 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	pipex_error(t_pipex *data, char *msg)
 
 void	pipex_error2(t_pipex *data, char *msg)
 {
-	ft_printf("pipex: %s\n", msg);
+	ft_printf_fd(2, "pipex: %s\n", msg);
 	pipex_close(data);
 	exit(EXIT_FAILURE);
 }
@@ -78,6 +78,10 @@ void	pipex_close(t_pipex *data)
 		}
 		ft_clean_ptrptr((void **) data->cmds);
 	}
-	close(data->input_fd);
-	close(data->output_fd);
+	if (data->input_fd != -1)
+		close(data->input_fd);
+	if (data->output_fd != -1)
+		close(data->output_fd);
+	if (data->pipe_in_fd != -1)
+		close(data->pipe_in_fd);
 }
