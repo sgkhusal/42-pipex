@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 22:02:02 by sguilher          #+#    #+#              #
-#    Updated: 2022/03/29 07:03:22 by sguilher         ###   ########.fr        #
+#    Updated: 2022/03/29 19:51:59 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ printf "\n"
 printf "$BLUE"
 echo "Test 5:"
 printf "$RESET"
+touch tests/outfiles/outfile00
 < tests/infiles/infile chmod 777 tests/outfiles/outfile00 | ls -l > tests/outfiles/outfile190
 chmod 644 tests/outfiles/outfile00
 ./pipex tests/infiles/infile "chmod 777 tests/outfiles/outfile00" "ls -l" tests/outfiles/outfile191
@@ -196,5 +197,15 @@ diff tests/outfiles/outfile210 tests/outfiles/outfile211
 printf "$RESET"
 printf "\n"
 
+printf "$BLUE"
+echo "Test 5:"
+printf "$RESET"
+< tests/infiles/swim_good grep -v swim | tr ' ' '  ' > tests/outfiles/outfile220
+./pipex tests/infiles/swim_good "grep -v swim" "tr ' ' '  '" tests/outfiles/outfile221
+printf "$RED"
+diff tests/outfiles/outfile220 tests/outfiles/outfile221
+printf "$RESET"
+
+printf "\n"
 #./pipex_bonus swim_good "grep swim" "tr 'o' 'O'" "tr 'mn' 'nm" "tr 'Ii' '1" tests/outfiles/outfile
 #./clean.sh
