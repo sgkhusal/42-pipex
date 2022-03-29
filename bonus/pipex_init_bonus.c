@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 20:09:46 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/26 04:38:04 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/29 06:43:44 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,18 @@ static void	set_cmds(t_pipex *data, int argc, char *argv[])
 
 void	pipex_init(t_pipex *data, int argc, char *argv[], char *envp[])
 {
+	char *msg;
+	
 	data->cmds = NULL;
 	data->exec_paths = NULL;
 	data->input_fd = open(argv[1], O_RDONLY, FD_CLOEXEC); ///
 	if (data->input_fd == -1)
-		perror(argv[1]);
+	if (data->input_fd == -1)
+	{
+		msg = ft_strjoin("pipex: ", argv[1]);
+		perror(msg);
+		free(msg);
+	}
 	data->output_fd = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (data->output_fd == -1)
 		pipex_error(data, argv[argc - 1]);
