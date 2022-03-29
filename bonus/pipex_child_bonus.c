@@ -61,6 +61,7 @@ static void	pipex_exec_cmd(t_pipex *data, t_cmd *cmd, char *envp[])
 			ft_printf_fd(2, "%s: %s\n", cmd->cmd, strerror(E_NOEXEC));
 		else if (check == E_CMD_NOT_FOUND)
 			ft_printf_fd(2, "pipex: %s: command not found\n", cmd->cmd);
+		pipex_close(data);
 		exit(EXIT_FAILURE);
 	}
 }
