@@ -76,4 +76,6 @@ void	pipex_close_fds(t_pipex *data)
 		close(data->input_fd);
 	if (data->output_fd != -1)
 		close(data->output_fd);
+	if (data->pipe_in_fd != -1)
+		close(data->pipe_in_fd);
 }
