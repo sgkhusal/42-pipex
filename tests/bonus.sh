@@ -231,7 +231,7 @@ printf "\n"
 export FT_NBR1=\\\&\\\&\!\\\&\\\&\!\\\&\\\&\!\\\&\\\&\!\\\&\\\&\!\\\&\\\&
 export FT_NBR2=dcrcmcmooododmrrrmorcmcrmomo
 printf "$BLUE"
-echo "Test 2:"
+echo "Test 3:"
 printf "$RESET"
 < tests/infiles/swim_good echo $FT_NBR1 + $FT_NBR2 | \
 #transformação de base 5 com caracteres para base 5 com números

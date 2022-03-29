@@ -42,6 +42,7 @@ printf "$RESET"
 printf "\n"
 
 ## ------------------ arquivo de entrada não existe ------------------------##
+printf "\n"
 printf "$GREEN"
 echo "--------------------- INFILE DOESN'T EXIST ---------------------"
 printf "\n"
@@ -107,9 +108,10 @@ printf "$RESET"
 
 
 ## ------------------ arquivo de entrada existe ------------------------##
+printf "\n"
+printf "\n"
 printf "$GREEN"
 echo "-------------------------- INFILE EXISTS --------------------------"
-printf "\n"
 
 #permissões de arquivo de entrada - execução, não leitura
 printf "\n"
@@ -207,7 +209,7 @@ printf "$RED"
 diff tests/outfiles/outfile210 tests/outfiles/outfile211
 printf "$RESET"
 
-printf "\n"
+printf "\n\n"
 printf "$GREEN"
 echo "------------------------ SINGLE QUOTE ERRORS ------------------------"
 printf "\n"
@@ -216,15 +218,18 @@ printf "$BLUE"
 echo "Test 1: missing single quote 1"
 printf "$RESET"
 ./pipex tests/infiles/swim_good "tr 'o' 'O" "tr 'mn' 'nm'" tests/outfiles/outfile121
+printf "\n"
 
 printf "$BLUE"
 echo "Test 2: missing single quote 2"
 printf "$RESET"
 ./pipex tests/infiles/swim_good "tr 'o' 'O'" "tr 'mn' 'nm" tests/outfiles/outfile131
+printf "\n"
 
 printf "$BLUE"
 echo "Test 3: missing single quote 3"
 printf "$RESET"
 ./pipex tests/infiles/swim_good "tr 'o' 'O" "tr 'mn' 'nm" tests/outfiles/outfile141
+printf "\n"
 
 #./clean.sh

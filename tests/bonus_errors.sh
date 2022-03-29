@@ -33,16 +33,18 @@ printf "\n"
 
 printf "$GREEN"
 echo "------------------------- INPUTS TEST -------------------------"
-printf "\n"
+printf "\n\n"
 printf "$BLUE"
 echo "Test 1:"
 printf "$RESET"
 ./pipex_bonus infile0 "catzzz" "bonjour" "wc -w" tests/outfiles/outfile
+printf "\n"
+
 printf "$BLUE"
 echo "Test 2:"
 printf "$RESET"
 ./pipex_bonus infile0 "cat" tests/outfiles/outfile
-printf "\n"
+printf "\n\n"
 
 ## ------------------ arquivo de entrada não existe ------------------------##
 printf "$GREEN"
@@ -98,29 +100,29 @@ printf "$RESET"
 # msg de erro "bash: wcc: command not found" apenas para o último comando
 # cria o arquivo de tests/outfiles/outfile ou deixa ele vazio se ele existe
 
-#bonus
-#printf "\n"
-#printf "$BLUE"
-#echo "Test 5:"
-#printf "$RESET"
-#< infile0 catzzz | bonjour | wc -l > tests/outfiles/outfile30
-#./pipex_bonus infile0 "catzzz" "bonjour" "wc -w" tests/outfiles/outfile31
-#diff tests/outfiles/outfile30 tests/outfiles/outfile31
+printf "\n"
+printf "$BLUE"
+echo "Test 5:"
+printf "$RESET"
+< infile0 catzzz | bonjour | wc -l > tests/outfiles/outfile30
+./pipex_bonus infile0 "catzzz" "bonjour" "wc -w" tests/outfiles/outfile31
+diff tests/outfiles/outfile30 tests/outfiles/outfile31
 #não roda o primeiro e o segundo comando (dá erro), mas roda o segundo
 
-
+printf "\n\n"
 ## ------------------ arquivo de entrada existe ------------------------##
 printf "$GREEN"
 echo "-------------------------- INFILE EXISTS --------------------------"
 printf "\n"
 
 #permissões de arquivo de entrada - execução, não leitura
-printf "\n"
 printf "$BLUE"
 echo "Test 1:"
 printf "$RESET"
+chmod 000 tests/infiles/infile_no_permission
 < tests/infiles/infile_no_permission ls -l | wc -l > tests/outfiles/outfile50
 ./pipex_bonus tests/infiles/infile_no_permission "ls -l" "wc -l" tests/outfiles/outfile51
+chmod 644 tests/infiles/infile_no_permission
 printf "$RED"
 diff tests/outfiles/outfile50 tests/outfiles/outfile51
 printf "$RESET"
@@ -208,7 +210,7 @@ printf "$RED"
 diff tests/outfiles/outfile210 tests/outfiles/outfile211
 printf "$RESET"
 
-printf "\n"
+printf "\n\n"
 printf "$GREEN"
 echo "------------------------ SINGLE QUOTE ERRORS ------------------------"
 printf "\n"
@@ -217,20 +219,23 @@ printf "$BLUE"
 echo "Test 1: missing single quote 1"
 printf "$RESET"
 ./pipex_bonus tests/infiles/swim_good "tr 'o' 'O" "tr 'mn' 'nm'" tests/outfiles/outfile121
+printf "\n"
 
 printf "$BLUE"
 echo "Test 2: missing single quote 2"
 printf "$RESET"
 ./pipex_bonus tests/infiles/swim_good "tr 'o' 'O'" "tr 'mn' 'nm" tests/outfiles/outfile131
+printf "\n"
 
 printf "$BLUE"
 echo "Test 3: missing single quote 3"
 printf "$RESET"
 ./pipex_bonus tests/infiles/swim_good "tr 'o' 'O" "tr 'mn' 'nm" tests/outfiles/outfile141
+printf "\n"
 
 printf "$BLUE"
 echo "Test 4: missing single quote 4"
 printf "$RESET"
 ./pipex_bonus tests/infiles/swim_good "grep swim" "tr 'o' 'O'" "tr 'mn' 'nm" "tr 'Ii' '1" tests/outfiles/outfile
-
+printf "\n"
 #./clean.sh
