@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 21:51:00 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/28 22:56:14 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/29 20:47:23 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,27 @@ static void	pipex_exec_cmd(t_pipex *data, t_cmd *cmd, char *envp[])
 	}
 }
 
+void	pipex_check_cmd(t_pipex *data, t_cmd *cmd)
+{
+	if (!cmd->cmd[0])
+	{
+		pipex_close_pipe_fds(data);
+		pipex_error2(data, ": command not found");
+		exit(EXIT_FAILURE);
+	}
+}
+
 void	pipex_child(t_pipex *data, int i, char *envp[])
 {
+	if (i == 0 && data->input_fd == -1)
+	{
+		pipex_close_pipe_fds(data);
+		pipex_close(data);
+		exit(EXIT_FAILURE);
+	}
+	pipex_check_cmd(data, data->cmds[i]);
 	if (i == 0)
 	{
-		if (data->input_fd == -1)
-			exit(EXIT_FAILURE);
 		dup2(data->input_fd, STDIN);
 		dup2(data->pipe_fds[1], STDOUT);
 	}
@@ -79,14 +94,6 @@ void	pipex_child(t_pipex *data, int i, char *envp[])
 		dup2(data->pipe_in_fd, STDIN);
 		dup2(data->output_fd, STDOUT);
 	}
-	close(data->pipe_fds[0]);
-	close(data->pipe_fds[1]);
-	close(data->input_fd);
-	close(data->output_fd);
-	if (!data->cmds[i]->cmd[0])
-	{
-		ft_printf_fd(2, "pipex: : command not found\n");
-		exit(EXIT_FAILURE);
-	}
+	pipex_close_fds(data);
 	pipex_exec_cmd(data, data->cmds[i], envp);
 }

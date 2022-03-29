@@ -6,33 +6,11 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 21:25:36 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/29 20:30:12 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/29 20:47:31 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/pipex.h"
-
-void	pipex_error(t_pipex *data, char *msg)
-{
-	perror(msg);
-	pipex_close(data);
-	exit(EXIT_FAILURE);
-}
-
-void	pipex_error2(t_pipex *data, char *msg)
-{
-	ft_printf_fd(2, "pipex: %s\n", msg);
-	pipex_close(data);
-	exit(EXIT_FAILURE);
-}
-
-void	pipex_quote_error(t_pipex *data, char **aux)
-{
-	ft_printf("pipex: invalid argument: missing single quote\n");
-	ft_clean_ptrptr((void **)aux);
-	pipex_close(data);
-	exit(EXIT_FAILURE);
-}
 
 void	ft_clean_ptrptr(void **ptr)
 {
@@ -83,4 +61,19 @@ void	pipex_close(t_pipex *data)
 		close(data->output_fd);
 	if (data->pipe_in_fd != -1)
 		close(data->pipe_in_fd);
+}
+
+void	pipex_close_pipe_fds(t_pipex *data)
+{
+	close(data->pipe_fds[0]);
+	close(data->pipe_fds[1]);
+}
+
+void	pipex_close_fds(t_pipex *data)
+{
+	pipex_close_pipe_fds(data);
+	if (data->input_fd != -1)
+		close(data->input_fd);
+	if (data->output_fd != -1)
+		close(data->output_fd);
 }
