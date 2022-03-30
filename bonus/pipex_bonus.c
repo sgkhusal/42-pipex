@@ -6,11 +6,11 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 20:49:47 by coder             #+#    #+#             */
-/*   Updated: 2022/03/30 18:25:16 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/30 20:52:17 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/pipex.h"
+#include "../headers/pipex_bonus.h"
 
 static void	pipex_exit_status(t_pipex *data, int child_pid)
 {
@@ -59,17 +59,26 @@ int	main(int argc, char *argv[], char *envp[])
 {
 	t_pipex	data;
 
-	if (argc < 5)
+	if (ft_strlen(argv[1]) == 8 && ft_strncmp("here_doc", argv[1], 8) == 0)
+	{
+		if (argc < 6)
+		{
+			ft_printf("pipex: %s - here_doc needs at least 5 arguments\n",
+				strerror(E_INVAL));
+			exit(EXIT_FAILURE);
+		}
+		data.here_doc = HERE_DOC;
+	}
+	else if (argc < 5)
 	{
 		ft_printf("pipex: %s - pipex needs at least 4 arguments\n",
 			strerror(E_INVAL));
 		exit(EXIT_FAILURE);
 	}
 	else
-	{
-		pipex_init(&data, argc, argv, envp);
-		pipex(&data, envp);
-	}
+		data.here_doc = NO_HERE_DOC;
+	pipex_init(&data, argc, argv, envp);
+	pipex(&data, envp);
 	pipex_close(&data);
 	return (data.status);
 }

@@ -6,11 +6,11 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 21:25:36 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/29 20:34:53 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/30 20:00:07 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/pipex.h"
+#include "../headers/pipex_bonus.h"
 
 void	ft_clean_ptrptr(void **ptr)
 {

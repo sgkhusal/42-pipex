@@ -6,11 +6,11 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 02:55:08 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/26 04:17:58 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/30 19:59:49 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/pipex.h"
+#include "../headers/pipex_bonus.h"
 
 static void	pipex_args_arrays_join(t_cmd *cmd, char *args, int pos, int final)
 {

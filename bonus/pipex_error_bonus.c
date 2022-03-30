@@ -6,11 +6,11 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 20:46:50 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/30 18:40:28 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/30 20:00:08 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/pipex.h"
+#include "../headers/pipex_bonus.h"
 
 void	pipex_error(t_pipex *data, char *msg)
 {
