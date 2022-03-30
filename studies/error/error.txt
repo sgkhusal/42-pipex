@@ -1,7 +1,7 @@
 Error number 1
  - EPERM: Operation not permitted
 Error number 2
- - ENOENT: No such file or directory / command not found
+ - ENOENT: No such file or directory 
 Error number 3
  - ESRCH: No such process
 Error number 4
@@ -247,7 +247,7 @@ Error number 125
 Error number 126
  - ENOKEY: Required key not available
 Error number 127
- - EKEYEXPIRED: Key has expired
+ - EKEYEXPIRED: Key has expired / command not found
 Error number 128
  - EKEYREVOKED: Key has been revoked
 Error number 129
