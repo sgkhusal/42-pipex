@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 21:51:00 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/30 18:19:21 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/30 19:01:29 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	pipex_exec_cmd(t_pipex *data, t_cmd *cmd, char *envp[])
 				cmd->cmd);
 			pipex_error(data, " ");
 		}
-		exit(EXIT_SUCCESS);
+		exit(EXIT_FAILURE);
 	}
 	else
 		pipex_error_cmd_path(data, cmd, check);
