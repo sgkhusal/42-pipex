@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 21:51:00 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/30 04:18:29 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/30 18:19:21 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,23 @@ static int	pipex_cmd_path(t_pipex *data, t_cmd *cmd)
 	return (E_CMD_NOT_FOUND);
 }
 
+static void	pipex_error_cmd_path(t_pipex *data, t_cmd *cmd, int check)
+{
+	if (check == E_NOEXEC)
+	{
+		ft_printf_fd(2, "%s: %s\n", cmd->cmd, strerror(E_NOEXEC));
+		pipex_close(data);
+		exit(E_NOEXEC);
+	}
+	else if (check == E_CMD_NOT_FOUND)
+	{
+		ft_printf_fd(2, "pipex: %s: command not found\n", cmd->cmd);
+		pipex_close(data);
+		exit(E_CMD_NOT_FOUND);
+	}
+	exit(EXIT_FAILURE);
+}
+
 static void	pipex_exec_cmd(t_pipex *data, t_cmd *cmd, char *envp[])
 {
 	int	check;
@@ -56,21 +73,7 @@ static void	pipex_exec_cmd(t_pipex *data, t_cmd *cmd, char *envp[])
 		exit(EXIT_SUCCESS);
 	}
 	else
-	{
-		if (check == E_NOEXEC)
-		{
-			ft_printf_fd(2, "%s: %s\n", cmd->cmd, strerror(E_NOEXEC));
-			pipex_close(data);
-			exit(E_NOEXEC);
-		}
-		else if (check == E_CMD_NOT_FOUND)
-		{
-			ft_printf_fd(2, "pipex: %s: command not found\n", cmd->cmd);
-			pipex_close(data);
-			exit(E_CMD_NOT_FOUND);
-		}
-		exit(EXIT_FAILURE);
-	}
+		pipex_error_cmd_path(data, cmd, check);
 }
 
 void	pipex_check_cmd(t_pipex *data, t_cmd *cmd)

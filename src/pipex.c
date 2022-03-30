@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 20:49:47 by coder             #+#    #+#             */
-/*   Updated: 2022/03/30 03:42:46 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/30 18:17:19 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	pipex_exit_status(t_pipex *data, int child_pid)
 {
 	int	w;
 	int	status;
-	
+
 	w = waitpid(child_pid, &status, 0);
 	if (w == -1)
 	{

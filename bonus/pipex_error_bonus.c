@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 20:46:50 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/30 04:19:10 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/30 18:40:28 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,13 @@ void	pipex_io_fd_error(t_pipex *data)
 	pipex_close_pipe_fds(data);
 	pipex_close(data);
 	exit(EXIT_FAILURE);
+}
+
+void	pipex_fd_open_error_msg(char *str)
+{
+	char	*msg;
+
+	msg = ft_strjoin("pipex: ", str);
+	perror(msg);
+	free(msg);
 }

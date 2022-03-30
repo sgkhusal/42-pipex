@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 20:54:13 by coder             #+#    #+#             */
-/*   Updated: 2022/03/30 04:19:36 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/30 18:39:56 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@
 # include "pipex_errors.h"
 
 # define STDIN 0
-
-# define NO_LIMITER 0
-# define SIMPLE_QUOTE '\''
-# define DOUBLE_QUOTE '\"'
 
 typedef struct s_cmd
 {
@@ -68,5 +64,6 @@ void	pipex_error(t_pipex *data, char *msg);
 void	pipex_error2(t_pipex *data, char *msg);
 void	pipex_quote_error(t_pipex *data, char **aux);
 void	pipex_io_fd_error(t_pipex *data);
+void	pipex_fd_open_error_msg(char *str);
 
 #endif

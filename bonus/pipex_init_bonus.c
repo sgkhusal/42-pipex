@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 20:09:46 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/30 04:17:42 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/30 18:42:54 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	set_cmds(t_pipex *data, int argc, char *argv[])
 	i = 0;
 	while (i < data->total_cmds)
 	{
-		data->cmds[i]->args = NULL;	
+		data->cmds[i]->args = NULL;
 		data->cmds[i]->cmd = NULL;
 		data->cmds[i]->path = NULL;
 		i++;
@@ -67,7 +67,6 @@ static void	set_cmds(t_pipex *data, int argc, char *argv[])
 	i = 0;
 	while (i < data->total_cmds)
 	{
-		*data->cmds[i] = (t_cmd){.args = NULL, .cmd = NULL, .path = NULL};
 		pipex_cmd_args_split(data, data->cmds[i], argv[i + 2]);
 		if (data->cmds[i]->args == NULL)
 			pipex_error2(data, "pipex: cmd args split error");
@@ -81,27 +80,16 @@ static void	set_cmds(t_pipex *data, int argc, char *argv[])
 
 void	pipex_init(t_pipex *data, int argc, char *argv[], char *envp[])
 {
-	char *msg;
-	
 	data->status = 0;
 	data->cmds = NULL;
 	data->exec_paths = NULL;
-	data->input_fd = open(argv[1], O_RDONLY, FD_CLOEXEC); ///
 	data->pipe_in_fd = -1;
+	data->input_fd = open(argv[1], O_RDONLY, FD_CLOEXEC); ///
 	if (data->input_fd == -1)
-	if (data->input_fd == -1)
-	{
-		msg = ft_strjoin("pipex: ", argv[1]);
-		perror(msg);
-		free(msg);
-	}
+		pipex_fd_open_error_msg(argv[1]);
 	data->output_fd = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (data->output_fd == -1)
-	{
-		msg = ft_strjoin("pipex: ", argv[argc - 1]);
-		perror(msg);
-		free(msg);
-	}
+		pipex_fd_open_error_msg(argv[argc - 1]);
 	set_env_path(data, envp);
 	set_cmds(data, argc, argv);
 }
