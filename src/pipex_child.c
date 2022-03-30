@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 21:51:00 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/30 19:01:29 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/30 19:14:51 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ static void	pipex_error_cmd_path(t_pipex *data, t_cmd *cmd, int check)
 	}
 	else if (check == E_CMD_NOT_FOUND)
 	{
-		ft_printf_fd(2, "pipex: %s: command not found\n", cmd->cmd);
+		if (ft_strncmp("cd", cmd->cmd, 2) != 0)
+			ft_printf_fd(2, "pipex: %s: command not found\n", cmd->cmd);
 		pipex_close(data);
 		exit(E_CMD_NOT_FOUND);
 	}
