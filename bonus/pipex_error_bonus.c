@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 20:46:50 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/29 20:49:46 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/30 04:19:10 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ void	pipex_quote_error(t_pipex *data, char **aux)
 {
 	ft_printf("pipex: invalid argument: missing single quote\n");
 	ft_clean_ptrptr((void **)aux);
+	pipex_close(data);
+	exit(EXIT_FAILURE);
+}
+
+void	pipex_io_fd_error(t_pipex *data)
+{
+	pipex_close_pipe_fds(data);
 	pipex_close(data);
 	exit(EXIT_FAILURE);
 }

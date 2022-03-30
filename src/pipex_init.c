@@ -95,7 +95,11 @@ void	pipex_init(t_pipex *data, int argc, char *argv[], char *envp[])
 	}
 	data->output_fd = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (data->output_fd == -1)
-		pipex_error2(data, argv[argc - 1]);
+	{
+		msg = ft_strjoin("pipex: ", argv[argc - 1]);
+		perror(msg);
+		free(msg);
+	}
 	set_env_path(data, envp);
 	set_cmds(data, argv);
 }

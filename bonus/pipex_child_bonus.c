@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 21:51:00 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/29 23:07:31 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/30 04:20:04 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,9 @@ void	pipex_check_cmd(t_pipex *data, t_cmd *cmd)
 void	pipex_child(t_pipex *data, int i, char *envp[])
 {
 	if (i == 0 && data->input_fd == -1)
-	{
-		pipex_close_pipe_fds(data);
-		pipex_close(data);
-		exit(EXIT_FAILURE);
-	}
+		pipex_io_fd_error(data);
+	if (i == data->total_cmds - 1 && data->output_fd == -1)
+		pipex_io_fd_error(data);
 	pipex_check_cmd(data, data->cmds[i]);
 	if (i == 0)
 	{

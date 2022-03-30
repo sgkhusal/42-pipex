@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 20:09:46 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/29 23:06:47 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/30 04:17:42 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,11 @@ void	pipex_init(t_pipex *data, int argc, char *argv[], char *envp[])
 	}
 	data->output_fd = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (data->output_fd == -1)
-		pipex_error(data, argv[argc - 1]);
+	{
+		msg = ft_strjoin("pipex: ", argv[argc - 1]);
+		perror(msg);
+		free(msg);
+	}
 	set_env_path(data, envp);
 	set_cmds(data, argc, argv);
 }

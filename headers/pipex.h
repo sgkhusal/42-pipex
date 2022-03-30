@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 20:54:13 by coder             #+#    #+#             */
-/*   Updated: 2022/03/29 22:39:01 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/30 04:19:36 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ void	ft_clean_ptrptr(void **ptr);
 void	pipex_error(t_pipex *data, char *msg);
 void	pipex_error2(t_pipex *data, char *msg);
 void	pipex_quote_error(t_pipex *data, char **aux);
+void	pipex_io_fd_error(t_pipex *data);
 
 #endif
