@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/04 21:14:15 by coder             #+#    #+#              #
-#    Updated: 2022/03/26 02:11:14 by sguilher         ###   ########.fr        #
+#    Updated: 2022/03/31 03:23:54 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SRC_FILES =			pipex.c pipex_init.c pipex_child.c pipex_utils.c \
 					pipex_close.c pipex_args_split.c pipex_error.c
 SRC_BONUS_FILES =	pipex_bonus.c pipex_init_bonus.c pipex_child_bonus.c \
 					pipex_utils_bonus.c pipex_error_bonus.c \
-					pipex_close_bonus.c pipex_args_split_bonus.c	
+					pipex_close_bonus.c pipex_args_split_bonus.c
 
 SRC =				$(addprefix $(SRC_PATH)/, $(SRC_FILES))
 OBJ =				$(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
@@ -47,7 +47,6 @@ OBJ_BONUS =			$(SRC_BONUS:$(SRC_BONUS_PATH)/%.c=$(OBJ_BONUS_PATH)/%.o)
 # compilation
 CC =		gcc
 CFLAGS =	-g3 -Wall -Werror -Wextra #-fsanitize=leak
-GNLFLAGS =	-D BUFFER_SIZE=10
 
 # clean
 RM =		-rm -f

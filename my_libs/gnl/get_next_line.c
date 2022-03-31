@@ -108,7 +108,7 @@ int	get_next_line(int fd, char **line)
 	ft_clean(&next[fd]);
 	if (*line == NULL)
 		nl = MALLOC_ERROR;
-	if (nl == 1)
+	if (nl == 1 && tmp[0])
 		next[fd] = tmp;
 	else
 		ft_clean(&tmp);

@@ -152,6 +152,16 @@ printf "$RED"
 diff tests/outfiles/outfile210 tests/outfiles/outfile211
 printf "$RESET"
 
+printf "\n"
+printf "$BLUE"
+echo "Test 13:"
+printf "$RESET"
+< tests/infiles/swim_good cat -e | ls > tests/outfiles/outfile300
+./pipex tests/infiles/swim_good "cat -e" "ls" tests/outfiles/outfile301
+printf "$RED"
+diff tests/outfiles/outfile210 tests/outfiles/outfile211
+printf "$RESET"
+
 printf "$GREEN"
 echo "------------------------ SINGLE QUOTE ------------------------"
 printf "\n"

@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 20:09:46 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/30 20:59:36 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/31 04:56:35 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ static void	alloc_cmds(t_pipex *data)
 	data->cmds[i] = NULL;
 }
 
-static void	set_cmds(t_pipex *data, int argc, char *argv[])
+static void	set_cmds(t_pipex *data, int nc, char *cmds[])
 {
 	int	i;
 
-	data->total_cmds = argc - 3;
+	data->total_cmds = nc;
 	alloc_cmds(data);
 	i = 0;
 	while (i < data->total_cmds)
@@ -67,7 +67,7 @@ static void	set_cmds(t_pipex *data, int argc, char *argv[])
 	i = 0;
 	while (i < data->total_cmds)
 	{
-		pipex_cmd_args_split(data, data->cmds[i], argv[i + 2]);
+		pipex_cmd_args_split(data, data->cmds[i], cmds[i]);
 		if (data->cmds[i]->args == NULL)
 			pipex_error2(data, "pipex: cmd args split error");
 		if (!data->cmds[i]->args[0])
@@ -83,9 +83,10 @@ void	pipex_init(t_pipex *data, int argc, char *argv[], char *envp[])
 	data->status = 0;
 	data->cmds = NULL;
 	data->exec_paths = NULL;
-	data->pipe_in_fd = -1;
+	if (data->here_doc != HERE_DOC)
+		data->pipe_in_fd = -1;
 	if (data->here_doc == HERE_DOC)
-		data->input_fd = 0;
+		data->input_fd = data->pipe_in_fd;
 	else
 		data->input_fd = open(argv[1], O_RDONLY, FD_CLOEXEC);
 	if (data->input_fd == -1)
@@ -99,5 +100,8 @@ void	pipex_init(t_pipex *data, int argc, char *argv[], char *envp[])
 	if (data->output_fd == -1)
 		pipex_fd_open_error_msg(argv[argc - 1]);
 	set_env_path(data, envp);
-	set_cmds(data, argc, argv);
+	if (data->here_doc == HERE_DOC)
+		set_cmds(data, argc - 4, &argv[3]);
+	else
+		set_cmds(data, argc - 3, &argv[2]);
 }

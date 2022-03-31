@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 20:49:47 by coder             #+#    #+#             */
-/*   Updated: 2022/03/30 20:52:17 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/03/31 06:03:38 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ static void	pipex_exit_status(t_pipex *data, int child_pid)
 	}
 	if (WIFEXITED(status))
 		data->status = WEXITSTATUS(status);
+	if (data->here_doc == HERE_DOC && data->status != EXIT_SUCCESS &&
+		data->pid_here_doc == child_pid)
+			pipex_error(data, "pipex: here_doc failure");
 }
 
 void	pipex(t_pipex *data, char *envp[])
 {
-	int	child_pid;
 	int	i;
+	int	child_pid;
 
 	i = 0;
 	while (i < data->total_cmds)
@@ -55,6 +58,59 @@ void	pipex(t_pipex *data, char *envp[])
 	}
 }
 
+void	here_doc_read(t_pipex *data, char *limiter, int lim_size, int fd)
+{
+	int		gnl;
+	char	*aux;
+
+	aux = NULL;
+	limiter = ft_strjoin(limiter, "\n");
+	gnl = get_next_line(0, &aux);
+	while(gnl == 1)
+	{
+		if (ft_strnstr(aux, limiter, lim_size) == NULL)
+		{
+			ft_putstr_fd(aux, fd);
+			ft_clean(&aux);
+			gnl = get_next_line(0, &aux);
+			if (gnl == -1)
+			{
+				close(fd);
+				pipex_error(data, "pipex: get_next_line error.");
+			}
+		}
+		else
+			gnl = 0;
+	}
+	close(fd);
+	free(limiter);
+	ft_clean(&aux);
+	exit(EXIT_SUCCESS);
+}
+
+void	pipex_here_doc(t_pipex *data, char *limiter)
+{
+	int		pipe_fd[2];
+
+	if (pipe(pipe_fd) == -1)
+		pipex_error(data, "pipex: here_doc pipe creating error");
+	data->pid_here_doc = fork();
+	if (data->pid_here_doc == -1)
+		pipex_error(data, "pipex: here_doc fork creating error");
+	if (data->pid_here_doc == 0)
+	{
+		close(pipe_fd[0]);
+		here_doc_read(data, limiter, ft_strlen(limiter) + 1, pipe_fd[1]);
+	}
+	else
+	{
+		close(pipe_fd[1]);
+		pipex_exit_status(data, data->pid_here_doc);
+		data->pipe_in_fd = dup(pipe_fd[0]);
+		close(pipe_fd[0]);
+	}
+}
+
 int	main(int argc, char *argv[], char *envp[])
 {
 	t_pipex	data;
@@ -68,6 +124,7 @@ int	main(int argc, char *argv[], char *envp[])
 			exit(EXIT_FAILURE);
 		}
 		data.here_doc = HERE_DOC;
+		pipex_here_doc(&data, argv[2]);
 	}
 	else if (argc < 5)
 	{
