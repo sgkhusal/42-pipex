@@ -93,10 +93,10 @@ void	pipex_init(t_pipex *data, int argc, char *argv[], char *envp[])
 		pipex_fd_open_error_msg(argv[1]);
 	if (data->here_doc == HERE_DOC)
 		data->output_fd = open(argv[argc - 1],
-			O_WRONLY | O_CREAT | O_APPEND, 0644);
+				O_WRONLY | O_CREAT | O_APPEND, 0644);
 	else
 		data->output_fd = open(argv[argc - 1],
-			O_WRONLY | O_CREAT | O_TRUNC, 0644);
+				O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (data->output_fd == -1)
 		pipex_fd_open_error_msg(argv[argc - 1]);
 	set_env_path(data, envp);

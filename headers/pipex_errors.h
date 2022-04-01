@@ -14,7 +14,7 @@
 # define PIPEX_ERRORS_H
 
 /* Define error numbers */
-# define OK	500
+# define OK 500
 # define E_INVAL 22
 # define E_CMD_NOT_FOUND 127
 # define E_NOEXEC 8

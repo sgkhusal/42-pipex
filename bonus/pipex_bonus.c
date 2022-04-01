@@ -25,9 +25,11 @@ static void	pipex_exit_status(t_pipex *data, int child_pid)
 	}
 	if (WIFEXITED(status))
 		data->status = WEXITSTATUS(status);
-	if (data->here_doc == HERE_DOC && data->status != EXIT_SUCCESS &&
-		data->pid_here_doc == child_pid)
+	if (data->here_doc == HERE_DOC && data->pid_here_doc == child_pid)
+	{
+		if (data->status != EXIT_SUCCESS)
 			pipex_error(data, "pipex: here_doc failure");
+	}
 }
 
 void	pipex(t_pipex *data, char *envp[])
@@ -66,7 +68,7 @@ void	here_doc_read(t_pipex *data, char *limiter, int lim_size, int fd)
 	aux = NULL;
 	limiter = ft_strjoin(limiter, "\n");
 	gnl = get_next_line(0, &aux);
-	while(gnl == 1)
+	while (gnl == 1)
 	{
 		if (ft_strnstr(aux, limiter, lim_size) == NULL)
 		{
@@ -85,7 +87,6 @@ void	here_doc_read(t_pipex *data, char *limiter, int lim_size, int fd)
 	close(fd);
 	free(limiter);
 	ft_clean(&aux);
-	exit(EXIT_SUCCESS);
 }
 
 void	pipex_here_doc(t_pipex *data, char *limiter)
@@ -101,6 +102,7 @@ void	pipex_here_doc(t_pipex *data, char *limiter)
 	{
 		close(pipe_fd[0]);
 		here_doc_read(data, limiter, ft_strlen(limiter) + 1, pipe_fd[1]);
+		exit(EXIT_SUCCESS);
 	}
 	else
 	{
