@@ -19,7 +19,7 @@ YELLOW="\033[1;33m"
 RESET="\033[0m"
 
 cd ..
-make reb
+make bonus
 
 printf "$YELLOW"
 echo "************************ PIPEX TESTER ************************"
