@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 void	printf_pointer(t_print *p, t_flags *f, char *hex, int size)
 {

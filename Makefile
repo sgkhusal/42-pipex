@@ -15,20 +15,22 @@ BONUS =					pipex_bonus
 
 # **************************************************************************** #
 # MY LIBRARIES - libft.a and libftprintf.a
+
 PRINTF_PATH =	./my_libs/ft_printf/
 LIBFT_PATH =	./my_libs/libft/
+GNL_PATH =		$(LIBFT_PATH)src/gnl
 
-PRINTF =		$(PRINTF_PATH)libftprintf.a
 LIBFT =			$(LIBFT_PATH)libft.a
-LIBFT_HEADER =	$(LIBFT_PATH)src/libft.h
+PRINTF =		$(PRINTF_PATH)libftprintf.a
+
 # **************************************************************************** #
 
 # INPUTS
 
-SRC_PATH =			./src
-OBJ_PATH =			./obj
-SRC_BONUS_PATH =	./bonus
-OBJ_BONUS_PATH =	./obj/bonus
+SRC_PATH =			src
+OBJ_PATH =			obj
+SRC_BONUS_PATH =	bonus
+OBJ_BONUS_PATH =	obj/bonus
 
 SRC_FILES =			pipex.c pipex_init.c pipex_child.c pipex_utils.c \
 					pipex_close.c pipex_args_split.c pipex_error.c

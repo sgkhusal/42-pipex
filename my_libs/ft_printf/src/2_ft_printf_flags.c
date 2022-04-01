@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 static void	check_numb_flags(t_flags *f, t_print *p, const char *s, int *i)
 {

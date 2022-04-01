@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 22:00:10 by sguilher          #+#    #+#             */
-/*   Updated: 2022/02/16 20:57:05 by coder            ###   ########.fr       */
+/*   Updated: 2022/04/01 19:47:10 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include "../libft/src/libft.h"
+# include "../../libft/src/libft.h"
 
 # define STDOUT	1
 # define CONVERSIONS "cspdiuxX"

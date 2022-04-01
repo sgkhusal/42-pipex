@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/12 02:08:39 by sguilher          #+#    #+#              #
-#    Updated: 2022/03/31 03:14:40 by sguilher         ###   ########.fr        #
+#    Updated: 2022/04/01 19:46:01 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,10 @@
 NAME =			libft.a
 
 HEADER =		./src/libft.h
-GNL_HEADER =	../gnl/get_next_line.h
+GNL_HEADER =	./src/gnl/get_next_line.h
 
 SRC_PATH =	./src
-GNL_PATH =	../gnl
+GNL_PATH =	./src/gnl
 OBJ_PATH =	./obj
 
 SRC_FILES	= ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c \

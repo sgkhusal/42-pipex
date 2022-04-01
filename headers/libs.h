@@ -22,7 +22,7 @@
 
 // my libraries and functions
 # include "../my_libs/libft/src/libft.h"
-# include "../my_libs/gnl/get_next_line.h"
-# include "../my_libs/ft_printf/ft_printf.h"
+# include "../my_libs/libft/src/gnl/get_next_line.h"
+# include "../my_libs/ft_printf/src/ft_printf.h"
 
 #endif
