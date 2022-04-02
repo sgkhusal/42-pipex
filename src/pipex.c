@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 20:49:47 by coder             #+#    #+#             */
-/*   Updated: 2022/03/30 18:17:19 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/02 21:26:03 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ void	pipex(t_pipex *data, char *envp[])
 			if (i < data->total_cmds - 1)
 				data->pipe_in_fd = dup(data->pipe_fds[0]);
 			pipex_close_pipe_fds(data);
-			pipex_exit_status(data, child_pid);
 			i++;
 		}
 	}
+	pipex_exit_status(data, child_pid);
 }
 
 int	main(int argc, char *argv[], char *envp[])
@@ -64,11 +64,8 @@ int	main(int argc, char *argv[], char *envp[])
 		ft_printf("pipex: %s - pipex needs 4 arguments\n", strerror(E_INVAL));
 		exit(EXIT_FAILURE);
 	}
-	else
-	{
-		pipex_init(&data, argc, argv, envp);
-		pipex(&data, envp);
-	}
+	pipex_init(&data, argc, argv, envp);
+	pipex(&data, envp);
 	pipex_close(&data);
 	return (data.status);
 }

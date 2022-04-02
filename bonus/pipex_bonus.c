@@ -54,10 +54,10 @@ void	pipex(t_pipex *data, char *envp[])
 			if (i < data->total_cmds - 1)
 				data->pipe_in_fd = dup(data->pipe_fds[0]);
 			pipex_close_pipe_fds(data);
-			pipex_exit_status(data, child_pid);
 			i++;
 		}
 	}
+	pipex_exit_status(data, child_pid);
 }
 
 void	here_doc_read(t_pipex *data, char *limiter, int lim_size, int fd)

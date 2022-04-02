@@ -56,7 +56,7 @@ void	pipex_cmd_args_split(t_pipex *data, t_cmd *cmd, char *args);
 char	*ft_strsjoin(int n, char *str1, ...);
 void	ft_strjoin_free(char **str1, char *str2);
 char	**ft_strarrayjoin(char **array, char *str);
-void	ft_arraysjoin(char **array1, char **array2);
+char	**void	ft_arraysjoin(char **array1, char **array2);
 int		ft_char_pos(char *str, char c);
 
 void	pipex_close(t_pipex *data);
