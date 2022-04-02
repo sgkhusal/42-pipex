@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 02:55:08 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/26 04:17:54 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/03 00:09:00 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 static void	pipex_args_arrays_join(t_cmd *cmd, char *args, int pos, int final)
 {
 	char	*tmp;
-	char	**aux;
+	char	**aux1;
+	char	**aux2;
 
+	aux1 = cmd->args;
 	tmp = ft_substr(args, pos, final);
-	aux = ft_split(tmp, ' ');
-	ft_arraysjoin(cmd->args, aux);
+	aux2 = ft_split(tmp, ' ');
+	cmd->args = ft_arraysjoin(aux1, aux2);
 	free(tmp);
-	ft_clean_ptrptr((void **)aux);
+	ft_clean_ptrptr((void **)aux2);
 }
 
 void	pipex_cmd_args_split_part2(t_cmd *cmd, char *args, t_cmd_split *split)

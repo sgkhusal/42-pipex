@@ -87,17 +87,20 @@ char	**ft_strarrayjoin(char **array, char *str)
 	return (new_array);
 }
 
-void	ft_arraysjoin(char **array1, char **array2)
+char	**ft_arraysjoin(char **array1, char **array2)
 {
 	int		i;
 	char	**aux;
+	char	**new_array;
 
 	i = 0;
+	aux = array1;
 	while (array2[i])
 	{
-		aux = array1;
-		array1 = ft_strarrayjoin(aux, array2[i]);
+		new_array = ft_strarrayjoin(aux, array2[i]);
 		ft_clean_ptrptr((void **)aux);
+		aux = new_array;
 		i++;
 	}
+	return (new_array);
 }

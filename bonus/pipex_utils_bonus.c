@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 01:31:35 by sguilher          #+#    #+#             */
-/*   Updated: 2022/03/30 20:00:12 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/04/03 00:10:27 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,17 +87,20 @@ char	**ft_strarrayjoin(char **array, char *str)
 	return (new_array);
 }
 
-void	ft_arraysjoin(char **array1, char **array2)
+char	**ft_arraysjoin(char **array1, char **array2)
 {
 	int		i;
 	char	**aux;
+	char	**new_array;
 
 	i = 0;
+	aux = array1;
 	while (array2[i])
 	{
-		aux = array1;
-		array1 = ft_strarrayjoin(aux, array2[i]);
+		new_array = ft_strarrayjoin(aux, array2[i]);
 		ft_clean_ptrptr((void **)aux);
+		aux = new_array;
 		i++;
 	}
+	return (new_array);
 }
