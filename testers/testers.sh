@@ -20,6 +20,11 @@ cd pipex_tester_42/
 #./pipex_tester.sh a # all
 
 cd ..
+git clone https://github.com/gsilva-v/PipexTester.git
+cd PipexTester
+./test.sh
+
+cd ..
 # esse tester tem algumas coisas para arrumar
 ##git clone https://github.com/HEADLIGHTER/pipexfasttest.git
 ##cd pipexfasttest && vim pipextest.sh
