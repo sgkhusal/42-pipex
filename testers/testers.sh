@@ -15,8 +15,8 @@ cd ..
 git clone git@github.com:Yoo0lh/pipex_tester_42.git 
 cd pipex_tester_42/
 ./pipex_tester.sh m #mandatory
-./pipex_tester.sh b #bonus multiple pipes - mudar nome do executável para pipex_bonus
-./pipex_tester.sh h #bonus heredoc - mudar nome do executável para pipex_bonus
+#./pipex_tester.sh b #bonus multiple pipes - mudar nome do executável para pipex_bonus
+#./pipex_tester.sh h #bonus heredoc - mudar nome do executável para pipex_bonus
 #./pipex_tester.sh a # all
 
 cd ..
