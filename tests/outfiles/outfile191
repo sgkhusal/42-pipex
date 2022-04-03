@@ -1,0 +1,13 @@
+total 180
+drwxr-xr-x 2 coder coder   4096 Apr  3 00:16 bonus
+drwxr-xr-x 2 coder coder   4096 Apr  3 00:16 headers
+-rw-r--r-- 1 coder coder   3431 Apr  3 00:16 Makefile
+drwxr-xr-x 4 coder coder   4096 Apr  3 00:16 my_libs
+drwxr-xr-x 2 coder coder   4096 Apr  3 16:55 obj
+-rwxr-xr-x 1 coder coder 132136 Apr  3 16:55 pipex
+drwxr-xr-x 4 coder coder   4096 Apr  3 16:54 PipexTester
+-rw-r--r-- 1 coder coder     10 Apr  3 00:16 README.md
+drwxr-xr-x 2 coder coder   4096 Apr  3 00:16 src
+drwxr-xr-x 4 coder coder   4096 Apr  3 00:16 studies
+drwxr-xr-x 2 coder coder   4096 Apr  3 00:16 testers
+drwxr-xr-x 4 coder coder   4096 Apr  3 16:59 tests

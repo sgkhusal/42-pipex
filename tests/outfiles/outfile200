@@ -1,0 +1,16 @@
+.
+..
+bonus
+.git
+.gitignore
+headers
+Makefile
+my_libs
+obj
+pipex
+PipexTester
+README.md
+src
+studies
+testers
+tests

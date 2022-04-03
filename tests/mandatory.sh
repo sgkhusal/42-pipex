@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 22:02:02 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/03 16:52:11 by sguilher         ###   ########.fr        #
+#    Updated: 2022/04/03 17:00:48 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ RED="\033[38;2;222;56;43m"
 BLUE="\033[38;2;34;183;235m"
 YELLOW="\033[1;33m"
 RESET="\033[0m"
+
+#mkdir outfiles
 
 cd ..
 make
@@ -170,6 +172,16 @@ printf "$RESET"
 ./pipex tests/infiles/infile_big "grep she" "wc -l" tests/outfiles/outfile311
 printf "$RED"
 diff tests/outfiles/outfile310 tests/outfiles/outfile311
+printf "$RESET"
+
+printf "\n"
+printf "$BLUE"
+echo "Test 15: PipexTester test 6"
+printf "$RESET"
+< tests/infiles/infile_big tr a ' ' | tr ' ' x > tests/outfiles/outfile320
+./pipex tests/infiles/infile_big "tr a ' '" "tr ' ' x" tests/outfiles/outfile321
+printf "$RED"
+diff tests/outfiles/outfile320 tests/outfiles/outfile321
 printf "$RESET"
 
 printf "$GREEN"
