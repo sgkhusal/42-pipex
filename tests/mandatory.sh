@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 22:02:02 by sguilher          #+#    #+#              #
-#    Updated: 2022/03/29 19:51:59 by sguilher         ###   ########.fr        #
+#    Updated: 2022/04/03 16:52:11 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -159,7 +159,17 @@ printf "$RESET"
 < tests/infiles/swim_good cat -e | ls > tests/outfiles/outfile300
 ./pipex tests/infiles/swim_good "cat -e" "ls" tests/outfiles/outfile301
 printf "$RED"
-diff tests/outfiles/outfile210 tests/outfiles/outfile211
+diff tests/outfiles/outfile300 tests/outfiles/outfile301
+printf "$RESET"
+
+printf "\n"
+printf "$BLUE"
+echo "Test 14: Big file"
+printf "$RESET"
+< tests/infiles/infile_big grep she | wc -l > tests/outfiles/outfile310
+./pipex tests/infiles/infile_big "grep she" "wc -l" tests/outfiles/outfile311
+printf "$RED"
+diff tests/outfiles/outfile310 tests/outfiles/outfile311
 printf "$RESET"
 
 printf "$GREEN"
