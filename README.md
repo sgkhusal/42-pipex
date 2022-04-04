@@ -42,8 +42,8 @@ It behaves exactly the same as the shell command below:
 In test folder you can find some tests and examples for mandatory and bonus parts:
 * ```./mandatory.sh```
 * ```./mandatory_errors.sh```
-* * ```./bonus.sh```
-* * ```./bonus_errors.sh```
+* ```./bonus.sh```
+* ```./bonus_errors.sh```
 
 ## Useful links to study about pipes, redirection and paralel processes using fork
 
