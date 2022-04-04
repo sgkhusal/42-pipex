@@ -12,8 +12,8 @@ My own code to execute shell commands with pipes and redirections
 * Execute the program as follows: ```./pipex file1 cmd1 cmd2 file2```
 
 It takes 4 arguments:
-• file1 (input) and file2 (output) are file names.
-• cmd1 and cmd2 are shell commands with their parameters.
+* file1 (input) and file2 (output) are file names.
+* cmd1 and cmd2 are shell commands with their parameters.
 
 It behaves exactly the same as the shell command below:
 ```< file1 cmd1 | cmd2 > file2```
