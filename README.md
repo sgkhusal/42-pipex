@@ -22,7 +22,7 @@ It behaves exactly the same as the shell command below:
 
 Handle multiple pipes:
 * run ```make bonus```
-* Execute the program as follows: ```> ./pipex_bonus file1 cmd1 cmd2 cmd3 ... cmdn file2```
+* Execute the program as follows: ```./pipex_bonus file1 cmd1 cmd2 cmd3 ... cmdn file2```
 
 It behaves exactly the same as the shell command below:
 ```< file1 cmd1 | cmd2 | cmd3 ... | cmdn > file2```
@@ -31,7 +31,7 @@ It behaves exactly the same as the shell command below:
 
 Support « and » when the first parameter is "here_doc".
 * run ```make bonus```
-* Execute the program as follows: ```> ./pipex_bonus here_doc LIMITER cmd cmd1 file```
+* Execute the program as follows: ```./pipex_bonus here_doc LIMITER cmd cmd1 file```
 * LIMITER is the word that you use as delimiter to end the input via keyboard
 
 It behaves exactly the same as the shell command below:
