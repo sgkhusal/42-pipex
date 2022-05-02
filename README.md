@@ -4,7 +4,7 @@ My own code to execute shell commands with pipes and redirections
 
 ## Requirements
 * The code is written in C language and thus needs the gcc/clang compiler and some standard C libraries to run
-* The project was developed for 42-SP School Workspaces system. For Linux and MacOS may have some different behaviors
+* The project was developed for 42-SP School Workspaces system. For Linux and MacOS it may have some different behaviors
 
 ## Mandatory part
 
