@@ -6,14 +6,14 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:42:30 by sguilher          #+#    #+#             */
-/*   Updated: 2022/05/11 11:44:44 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/11 11:45:42 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include "../my_libs/libft/src/libft.h"
 
-void	ft_strjoin_free(char **str1, char *str2)
+static void	ft_strjoin_free(char **str1, char *str2)
 {
 	char	*aux;
 

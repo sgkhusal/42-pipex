@@ -6,7 +6,7 @@
 /*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 20:54:13 by coder             #+#    #+#             */
-/*   Updated: 2022/03/30 18:39:56 by sguilher         ###   ########.fr       */
+/*   Updated: 2022/05/11 11:49:42 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	pipex_init(t_pipex *data, int argc, char *argv[], char *envp[]);
 void	pipex_child(t_pipex *data, int i, char *envp[]);
 void	pipex_cmd_args_split(t_pipex *data, t_cmd *cmd, char *args);
 
-char	*ft_strsjoin(int n, char *str1, ...);
+char	*ft_strsjoin(char *str1, char *str2, char *str3);
 void	ft_strjoin_free(char **str1, char *str2);
 char	**ft_strarrayjoin(char **array, char *str);
 char	**ft_arraysjoin(char **array1, char **array2);
