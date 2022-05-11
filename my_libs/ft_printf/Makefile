@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/04 17:01:10 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/01 19:47:45 by sguilher         ###   ########.fr        #
+#    Updated: 2022/05/11 11:53:57 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRC =		$(addprefix $(SRC_PATH)/, $(SRC_FILES))
 OBJ =		$(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 
 # compilation
-CC =		clang
+CC =		gcc
 CFLAGS = 	-Wall -Werror -Wextra
 
 # clean
