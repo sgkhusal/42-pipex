@@ -6,7 +6,7 @@
 #    By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 22:02:02 by sguilher          #+#    #+#              #
-#    Updated: 2022/04/03 17:00:48 by sguilher         ###   ########.fr        #
+#    Updated: 2022/05/11 12:36:56 by sguilher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ BLUE="\033[38;2;34;183;235m"
 YELLOW="\033[1;33m"
 RESET="\033[0m"
 
-#mkdir outfiles
+mkdir outfiles
 
 cd ..
 make
